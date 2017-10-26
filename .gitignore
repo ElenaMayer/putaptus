@@ -30,3 +30,7 @@ tests/_support/_generated
 
 # upload
 public_html/upload/*
+
+# config
+config/db.php
+config/web.php

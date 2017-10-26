@@ -35,7 +35,7 @@ AppAsset::register($this);
             <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="header-top-left social-icons">
                     <a href="<?= Yii::$app->params['linkVk'] ?>"><i class="fa fa-vk"></i></a>
-                    <a href="<?= Yii::$app->params['linkIg'] ?>"><i class="fa fa-instagram"></i></a>
+                    <a href="<?= Yii::$app->params['linkOk'] ?>"><i class="fa fa-odnoklassniki"></i></a>
                     <a href="<?= Yii::$app->params['linkFb'] ?>"><i class="fa fa-facebook"></i></a>
                     <a href="<?= Yii::$app->params['linkYt'] ?>"><i class="fa fa-youtube-play"></i></a>
                 </div>
@@ -82,8 +82,8 @@ AppAsset::register($this);
 <!-- header -->
 <header class="header">
     <div class="logo text-center">
-        <h1><a href="/"> <img src="/images/logo.png?2" alt="Textual"></a></h1>
-        <p>Гид по шопингу - научись покупать онлайн!</p>
+        <h1><a href="/"> <img src="/images/logo.png?4" alt="Textual"></a></h1>
+        <p>Лучший канал для детей!</p>
     </div>
 </header>
 <!-- start main menu -->
@@ -131,7 +131,7 @@ AppAsset::register($this);
                         <span>Мы в соцсетях: </span>
                         <ul class="">
                             <li><a class="s-vk" href="<?= Yii::$app->params['linkVk'] ?>"><i class="fa fa-vk"></i></a></li>
-                            <li><a class="s-instagram" href="<?= Yii::$app->params['linkIg'] ?>"><i class="fa fa-instagram"></i></a></li>
+                            <li><a class="s-odnoklassniki" href="<?= Yii::$app->params['linkOk'] ?>"><i class="fa fa-odnoklassniki"></i></a></li>
                             <li><a class="s-facebook" href="<?= Yii::$app->params['linkFb'] ?>"><i class="fa fa-facebook"></i></a></li>
                             <li><a class="s-youtube" href="<?= Yii::$app->params['linkYt'] ?>"><i class="fa fa-youtube-play"></i></a></li>
                         </ul>

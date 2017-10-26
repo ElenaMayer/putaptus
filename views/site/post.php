@@ -29,9 +29,9 @@ $this->title = Yii::$app->params['adminEmail']. ' - '.$post->title;
                         <?php endforeach;?>
                     </ul>
                     <ul class="meta-social pull-right">
-                        <li class="s-vk"><a href=""><i class="fa fa-vk"></i></a></li>
-                        <li class="s-instagram"><a href=""><i class="fa fa-instagram"></i></a></li>
-                        <li class="s-facebook"><a href=""><i class="fa fa-facebook"></i></a></li>
+                        <li class="s-vk"><a href="<?= Yii::$app->params['linkVk'] ?>"><i class="fa fa-vk"></i></a></li>
+                        <li class="s-odnoklassniki"><a href="<?= Yii::$app->params['linkOk'] ?>"><i class="fa fa-odnoklassniki"></i></a></li>
+                        <li class="s-facebook"><a href="<?= Yii::$app->params['linkFb'] ?>"><i class="fa fa-facebook"></i></a></li>
                         <li class="s-heart"><a href=""><i class="fa fa-heart"></i></a></li>
                     </ul>
                 </div>
