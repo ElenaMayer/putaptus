@@ -129,6 +129,7 @@ foreach ($model->blogCatPos as $c)
 		
 				<?= $form->field($model, 'tags')->widget(Select2::classname(), [
 					'options' => [
+                        'multiple' => true,
 						'placeholder' => Yii::t('app','Put additional tags ...'),
 					],
 					'data'=>$model->getTags(),

@@ -67,9 +67,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $posts = Post::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
+        $posts = new Post;
+        $tags = $posts->getTags();
+        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
         $categories = Category::find()->all();
-        $tags = Post::find()->select(['tags'])->distinct()->all();
         return $this->render('index', [
                 'posts' => $posts,
                 'categories' => $categories,

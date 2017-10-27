@@ -31,7 +31,7 @@
         <aside class="widget widget-tag"><!-- start single widget -->
             <h3 class="widget-title text-uppercase">Облако тэгов</h3>
             <?php foreach ($tags as $tag):?>
-                <a href="/tag/<?= $tag->tags ?>"><?= $tag->tags ?></a>
+                <a href="/tag/<?= $tag ?>"><?= $tag ?></a>
             <?php endforeach;?>
         </aside><!-- end single widget -->
         <aside class="widget news-letter"><!-- start single widget -->
