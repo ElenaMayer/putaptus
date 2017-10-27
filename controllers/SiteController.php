@@ -86,9 +86,10 @@ class SiteController extends Controller
      */
     public function actionCategory($id)
     {
-        $posts = Post::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
+        $posts = new Post;
+        $tags = $posts->getTags();
+        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
         $categories = Category::find()->all();
-        $tags = Post::find()->select(['tags'])->distinct()->all();
 
         $category = Category::findOne($id);
         return $this->render('category', [
@@ -108,11 +109,13 @@ class SiteController extends Controller
      */
     public function actionTag($tag)
     {
-        $posts = Post::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
+        $posts = new Post;
+        $tags = $posts->getTags();
+        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
         $categories = Category::find()->all();
-        $tags = Post::find()->select(['tags'])->distinct()->all();
 
-        $postsByTag = Post::find()->where(['tags' => $tag, 'status' => 1])->all();
+        $postsByTag = Post::find()->where(['status' => 1])->andFilterWhere(['like', 'tags', $tag])
+            ->all();
         return $this->render('tag', [
                 'posts' => $posts,
                 'categories' => $categories,
@@ -130,9 +133,10 @@ class SiteController extends Controller
      */
     public function actionPost($id)
     {
-        $posts = Post::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
+        $posts = new Post;
+        $tags = $posts->getTags();
+        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
         $categories = Category::find()->all();
-        $tags = Post::find()->select(['tags'])->distinct()->all();
 
         $post = Post::findOne($id);
         return $this->render('post', [
@@ -249,9 +253,10 @@ class SiteController extends Controller
 //            ->all();
 //        print_r($rows);die();
 
-        $posts = Post::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
+        $posts = new Post;
+        $tags = $posts->getTags();
+        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
         $categories = Category::find()->all();
-        $tags = Post::find()->select(['tags'])->distinct()->all();
 
         return $this->render('search', [
                 'posts' => $posts,

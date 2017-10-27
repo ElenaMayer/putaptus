@@ -20,6 +20,18 @@
             <?php endforeach;?>
         </aside><!-- end single widget -->
 
+        <aside class="widget category-post-no"><!-- start single widget -->
+            <h3 class="widget-title text-uppercase">Категории</h3>
+            <ul>
+                <?php foreach ($categories as $category):?>
+                    <li>
+                        <a href="/category/<?= $category->id ?>"><?= $category->description ?></a>
+                        <span class="post-count pull-right"> <?= count($category->activePosts);?> </span>
+                    </li>
+                <?php endforeach;?>
+            </ul>
+        </aside><!-- end single widget -->
+
         <aside class="widget widget_vk">
             <script type="text/javascript" src="//vk.com/js/api/openapi.js?150"></script>
             <!-- VK Widget -->
@@ -66,17 +78,6 @@
                     <li><a class="s-youtube" href="<?= Yii::$app->params['linkYt'] ?>"><i class="fa fa-youtube-play"></i></a></li>
                 </ul>
             </div>
-        </aside><!-- end single widget -->
-        <aside class="widget category-post-no"><!-- start single widget -->
-            <h3 class="widget-title text-uppercase">Категории</h3>
-            <ul>
-                <?php foreach ($categories as $category):?>
-                    <li>
-                        <a href="/category/<?= $category->id ?>"><?= $category->description ?></a>
-                        <span class="post-count pull-right"> <?= count($category->activePosts);?> </span>
-                    </li>
-                <?php endforeach;?>
-            </ul>
         </aside><!-- end single widget -->
     </div>
     <!-- end sidebar -->

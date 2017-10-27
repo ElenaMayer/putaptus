@@ -8,9 +8,6 @@ $this->title = Yii::$app->params['adminEmail']. ' - '.$post->title;
     <div class="col-md-8">
         <!-- start post -->
         <article class="post single-post">
-            <div class="post-thumb">
-                <img src="../<?= $post->image ?>" alt="<?= $post->title ?>">
-            </div>
             <div class="post-content">
                 <div class="post-header">
                     <h2><?= $post->title ?> <span class="pull-right"><?= $post->getTimeString() ?></span></h2>
@@ -20,7 +17,9 @@ $this->title = Yii::$app->params['adminEmail']. ' - '.$post->title;
                     <?= $post->content ?>
                 </div>
                 <div class="post-tag">
-                    <a href="/tag/<?= $post->tags ?>"><?= $post->tags ?></a>
+                    <?php foreach ($post->getTags() as $tag):?>
+                        <a href="/tag/<?= $tag ?>"><?= $tag ?></a>
+                    <?php endforeach;?>
                 </div>
                 <div class="single-post-meta">
                     <ul class="meta-profile pull-left">
