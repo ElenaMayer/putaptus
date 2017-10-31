@@ -101,11 +101,12 @@ AppAsset::register($this);
             </div>
             <div id="myNavbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="<?php if (strpos(Yii::$app->request->pathInfo, 'category/1')!==false):?>active<?php endif;?>"><a href="/category/1">Пошаговые инструкции</a></li>
-                    <li class="<?php if (strpos(Yii::$app->request->pathInfo, 'category/2')!==false):?>active<?php endif;?>"><a href="/category/2">Обзоры магазинов</a></li>
-                    <li class="<?php if (strpos(Yii::$app->request->pathInfo, 'catalog')!==false):?>active<?php endif;?>"><a href="/catalog">Каталог магазинов</a></li>
-                    <li class="<?php if (strpos(Yii::$app->request->pathInfo, 'category/3')!==false):?>active<?php endif;?>"><a href="/category/3">Обзоры товаров</a></li>
-                    <li class="<?php if (strpos(Yii::$app->request->pathInfo, 'category/4')!==false):?>active<?php endif;?>"><a href="/category/4">Полезное</a></li>
+                    <li class="<?php if (strpos(Yii::$app->request->pathInfo, 'category/7')!==false):?>active<?php endif;?>"><a href="/category/7">Развивающие мультики</a></li>
+                    <li class="<?php if (strpos(Yii::$app->request->pathInfo, 'category/1')!==false):?>active<?php endif;?>"><a href="/category/1">Щенячий патруль</a></li>
+                    <li class="<?php if (strpos(Yii::$app->request->pathInfo, 'category/9')!==false):?>active<?php endif;?>"><a href="/category/9">Герои в масках</a></li>
+                    <li class="<?php if (strpos(Yii::$app->request->pathInfo, 'category/2')!==false):?>active<?php endif;?>"><a href="/category/2">Робокар Поли</a></li>
+                    <li class="<?php if (strpos(Yii::$app->request->pathInfo, 'category/5')!==false):?>active<?php endif;?>"><a href="/category/5">Сюрпризы в пластилине</a></li>
+                    <li class="<?php if (strpos(Yii::$app->request->pathInfo, 'category/4')!==false):?>active<?php endif;?>"><a href="/category/4">Учим цвета</a></li>
                 </ul>
             </div>
         </div>
@@ -142,7 +143,7 @@ AppAsset::register($this);
     </div>
 </footer>
 <!-- end footer area -->
-
+<?= $this->render('../site/_metrika'); ?>
 <?php $this->endBody() ?>
 </body>
 </html>

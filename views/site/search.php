@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = Yii::$app->params['title'];;
+$this->title = Yii::$app->params['title'].' - '.$_GET['s'];
 ?>
 <div class="row">
     <div class="col-md-8">

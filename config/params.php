@@ -3,7 +3,7 @@
 // Yii::$app->params['adminEmail'];
 return [
     'adminEmail' => 'admin@example.com',
-    'title' => 'Гид по шопингу',
+    'title' => 'Путаптус',
     'linkVk' => 'https://vk.com/club152357955',
     'linkIg' => '',
     'linkFb' => 'https://www.facebook.com/groups/118393688837197/',

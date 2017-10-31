@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = Yii::$app->params['adminEmail']. ' - '.$post->title;
+$this->title = Yii::$app->params['title']. ' - '.$post->title;
 ?>
 <div class="row">
     <div class="col-md-8">

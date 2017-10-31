@@ -1,6 +1,19 @@
 <div class="col-md-4">
     <!-- start sidebar -->
     <div class="sidebar">
+
+        <aside class="widget category-post-no"><!-- start single widget -->
+            <h3 class="widget-title text-uppercase">Категории</h3>
+            <ul>
+                <?php foreach ($categories as $category):?>
+                    <li>
+                        <a href="/category/<?= $category->id ?>"><?= $category->description ?></a>
+                        <span class="post-count pull-right"> <?= count($category->activePosts);?> </span>
+                    </li>
+                <?php endforeach;?>
+            </ul>
+        </aside><!-- end single widget -->
+
         <aside class="widget"><!-- start single widget -->
             <h3 class="widget-title text-uppercase">Популярные посты</h3>
             <?php foreach ($posts as $post):?>
@@ -18,18 +31,6 @@
                     </div>
                 </div>
             <?php endforeach;?>
-        </aside><!-- end single widget -->
-
-        <aside class="widget category-post-no"><!-- start single widget -->
-            <h3 class="widget-title text-uppercase">Категории</h3>
-            <ul>
-                <?php foreach ($categories as $category):?>
-                    <li>
-                        <a href="/category/<?= $category->id ?>"><?= $category->description ?></a>
-                        <span class="post-count pull-right"> <?= count($category->activePosts);?> </span>
-                    </li>
-                <?php endforeach;?>
-            </ul>
         </aside><!-- end single widget -->
 
         <aside class="widget widget_vk">
@@ -54,6 +55,18 @@
                 <input type="submit" value="Подписаться" class="text-uppercase text-center btn btn-subscribe">
             </form>
         </aside><!-- end single widget -->
+
+        <aside class="widget"><!-- start single widget -->
+            <div class="social-share">
+                <h3 class="widget-title text-uppercase">Мы в соцсетях</h3>
+                <ul class="">
+                    <li><a class="s-vk" href="<?= Yii::$app->params['linkVk'] ?>"><i class="fa fa-vk"></i></a></li>
+                    <li><a class="s-odnoklassniki" href="<?= Yii::$app->params['linkOk'] ?>"><i class="fa fa-odnoklassniki"></i></a></li>
+                    <li><a class="s-facebook" href="<?= Yii::$app->params['linkFb'] ?>"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="s-youtube" href="<?= Yii::$app->params['linkYt'] ?>"><i class="fa fa-youtube-play"></i></a></li>
+                </ul>
+            </div>
+        </aside><!-- end single widget -->
         <aside class="widget p-post-widget">
             <h3 class="widget-title text-uppercase">Последние посты</h3>
             <?php foreach ($posts as $post):?>
@@ -68,17 +81,6 @@
                 </div>
             <?php endforeach;?>
         </aside>
-        <aside class="widget"><!-- start single widget -->
-            <div class="social-share">
-                <h3 class="widget-title text-uppercase">Мы в соцсетях</h3>
-                <ul class="">
-                    <li><a class="s-vk" href="<?= Yii::$app->params['linkVk'] ?>"><i class="fa fa-vk"></i></a></li>
-                    <li><a class="s-odnoklassniki" href="<?= Yii::$app->params['linkOk'] ?>"><i class="fa fa-odnoklassniki"></i></a></li>
-                    <li><a class="s-facebook" href="<?= Yii::$app->params['linkFb'] ?>"><i class="fa fa-facebook"></i></a></li>
-                    <li><a class="s-youtube" href="<?= Yii::$app->params['linkYt'] ?>"><i class="fa fa-youtube-play"></i></a></li>
-                </ul>
-            </div>
-        </aside><!-- end single widget -->
     </div>
     <!-- end sidebar -->
 </div>

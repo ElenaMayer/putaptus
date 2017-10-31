@@ -69,7 +69,7 @@ class SiteController extends Controller
     {
         $posts = new Post;
         $tags = $posts->getTags();
-        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
+        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->limit(5)->all();
         $categories = Category::find()->all();
         return $this->render('index', [
                 'posts' => $posts,
@@ -88,7 +88,7 @@ class SiteController extends Controller
     {
         $posts = new Post;
         $tags = $posts->getTags();
-        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
+        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->limit(5)->all();
         $categories = Category::find()->all();
 
         $category = Category::findOne($id);
@@ -111,7 +111,7 @@ class SiteController extends Controller
     {
         $posts = new Post;
         $tags = $posts->getTags();
-        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
+        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->limit(5)->all();
         $categories = Category::find()->all();
 
         $postsByTag = Post::find()->where(['status' => 1])->andFilterWhere(['like', 'tags', $tag])
@@ -135,7 +135,7 @@ class SiteController extends Controller
     {
         $posts = new Post;
         $tags = $posts->getTags();
-        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
+        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->limit(5)->all();
         $categories = Category::find()->all();
 
         $post = Post::findOne($id);
@@ -146,11 +146,6 @@ class SiteController extends Controller
                 'post' => $post,
             ]
         );
-    }
-
-    public function actionCatalog()
-    {
-        print_r(222);
     }
 
     //ajax
@@ -255,7 +250,7 @@ class SiteController extends Controller
 
         $posts = new Post;
         $tags = $posts->getTags();
-        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
+        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->limit(5)->all();
         $categories = Category::find()->all();
 
         return $this->render('search', [
