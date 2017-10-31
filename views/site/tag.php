@@ -9,6 +9,7 @@ $this->title = Yii::$app->params['title'].' - '.$tag;
         <div class="archive-title">Статьи по тэгу <span class="archive-name"><?= $tag ?></span></div>
         <?= $this->render('_posts', [
             'posts' => $postsByTag,
+            'pages' => $pages,
         ]); ?>
     </div>
     <?= $this->render('_sidebar', [

@@ -9,6 +9,7 @@ $this->title = Yii::$app->params['title'].' - '.$category->title;
         <div class="archive-title">Категория <span class="archive-name"><?= $category->description ?></span></div>
         <?= $this->render('_posts', [
             'posts' => $postByCategory,
+            'pages' => $pages,
         ]); ?>
     </div>
     <?= $this->render('_sidebar', [

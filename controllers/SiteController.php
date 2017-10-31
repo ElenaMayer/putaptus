@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use amilna\blog\models\BlogCatPos;
 use amilna\blog\models\Category;
 use amilna\blog\models\Post;
 use amilna\blog\models\Comment;
@@ -11,6 +12,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\sphinx\Query;
+use yii\data\Pagination;
 
 class SiteController extends Controller
 {
@@ -89,13 +91,22 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $posts = Post::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
+
+        $query = Post::find()->where(['status' => 1]);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => Yii::$app->params['pageLimit']]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->orderBy(['time'=>SORT_DESC])
+            ->all();
+
         return $this->render('index', [
-                'posts' => $posts,
+                'posts' => $models,
                 'lastPosts' => $this->lastPosts,
                 'popularPosts' => $this->popularPosts,
                 'categories' => $this->categories,
                 'tags' => $this->tags,
+                'pages' => $pages,
             ]
         );
     }
@@ -107,15 +118,24 @@ class SiteController extends Controller
      */
     public function actionCategory($id)
     {
-        $category = Category::findOne($id);
+        $query = Post::find()
+            ->joinWith('blogCatPos', false)
+            ->where(['status' => 1, BlogCatPos::tableName().'.category_id' => $id, BlogCatPos::tableName().'.isdel' => 0]);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => Yii::$app->params['pageLimit']]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->orderBy(['time'=>SORT_DESC])
+            ->all();
 
         return $this->render('category', [
                 'lastPosts' => $this->lastPosts,
                 'popularPosts' => $this->popularPosts,
                 'categories' => $this->categories,
                 'tags' => $this->tags,
-                'category' => $category,
-                'postByCategory' => $category->activePosts,
+                'category' => Category::findOne($id),
+                'postByCategory' => $models,
+                'pages' => $pages,
             ]
         );
     }
@@ -127,15 +147,23 @@ class SiteController extends Controller
      */
     public function actionTag($tag)
     {
-        $postsByTag = Post::find()->where(['status' => 1])->andFilterWhere(['like', 'tags', $tag])->all();
+
+        $query = Post::find()->where(['status' => 1])->andFilterWhere(['like', 'tags', $tag]);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => Yii::$app->params['pageLimit']]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->orderBy(['time'=>SORT_DESC])
+            ->all();
 
         return $this->render('tag', [
                 'lastPosts' => $this->lastPosts,
                 'popularPosts' => $this->popularPosts,
                 'categories' => $this->categories,
                 'tags' => $this->tags,
-                'postsByTag' => $postsByTag,
+                'postsByTag' => $models,
                 'tag' => $tag,
+                'pages' => $pages,
             ]
         );
     }

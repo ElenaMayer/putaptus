@@ -10,4 +10,5 @@ return [
     'linkOk' => 'https://ok.ru/privetmalc',
     'linkYt' => 'https://www.youtube.com/channel/UCK69nZWaEh-f7Oyw3wg9b8g/',
     'groupIdVk' => '152357955',
+    'pageLimit' => '15',
 ];

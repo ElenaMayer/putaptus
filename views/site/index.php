@@ -8,6 +8,7 @@ $this->title = Yii::$app->params['title'];
     <div class="col-md-8">
         <?= $this->render('_posts', [
             'posts' => $posts,
+            'pages' => $pages,
         ]); ?>
     </div>
     <?= $this->render('_sidebar', [

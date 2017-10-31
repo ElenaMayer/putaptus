@@ -708,6 +708,11 @@ span.archive-name {
     background: #319427;
 }
 
+.post.list-post .entry-content .continue-reading {
+    float: right;
+    padding-bottom: 20px;
+}
+
 /*----------------------------------------
 pagination
 ------------------------------------------*/
@@ -733,10 +738,6 @@ pagination
     padding-bottom: 25px;
 }
 
-.list-post + .post-pagination {
-    padding-top: 20px;
-}
-
 .grid-pagination {
     padding-top: 20px;
 }
@@ -756,7 +757,7 @@ pagination
     height: 35px;
     font-size: 12px;
     line-height: 35px;
-    margin-top: 14px;
+    margin-top: 0;
 }
 
 /*----------------------------------------

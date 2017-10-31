@@ -45,7 +45,7 @@ $config = [
             'rules' => [
                 'post/<id:\d+>' => 'site/post/',
                 'category/<id:\d+>' => 'site/category/',
-                'tag/<tag:\w+>' => 'site/tag/',
+                'tag/<tag:.+>' => 'site/tag/',
                 'search' => 'site/search/',
                 'ajax/<action:\w+>' => 'site/<action>',
             ],
