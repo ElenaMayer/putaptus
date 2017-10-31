@@ -1,5 +1,7 @@
 <?php foreach ($posts as $post):?>
-    <article class="post">
+
+<div class="col-md-6">
+    <article class="post list-post post-grid">
         <div class="post-thumb">
             <a href="/post/<?= $post->id?>"><img src="../<?= $post->image?>" alt="<?= $post->title?>"></a>
             <a href="/post/<?= $post->id?>" class="post-thumb-overlay text-center">
@@ -21,6 +23,7 @@
             </div>
         </div>
     </article>
+</div>
 <?php endforeach;?>
 <!--pagination-->
 <!--<div class="post-pagination text-center">-->

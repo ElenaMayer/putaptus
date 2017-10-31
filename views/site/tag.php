@@ -12,7 +12,8 @@ $this->title = Yii::$app->params['title'].' - '.$tag;
         ]); ?>
     </div>
     <?= $this->render('_sidebar', [
-            'posts' => $posts,
+            'lastPosts' => $lastPosts,
+            'popularPosts' => $popularPosts,
             'categories' => $categories,
             'tags' => $tags,
         ]); ?>

@@ -16,17 +16,17 @@
 
         <aside class="widget"><!-- start single widget -->
             <h3 class="widget-title text-uppercase">Популярные посты</h3>
-            <?php foreach ($posts as $post):?>
+            <?php foreach ($popularPosts as $pPost):?>
                 <div class="thumb-latest-posts">
                     <div class="media">
                         <div class="media-left">
-                            <a href="/post/<?= $post->id?>" class="popular-img"><img src="../<?=$post->image?>" alt="<?=$post->image?>">
+                            <a href="/post/<?= $pPost->id?>" class="popular-img"><img src="../<?=$pPost->image?>" alt="<?=$pPost->image?>">
                                 <div class="p-overlay"></div>
                             </a>
                         </div>
                         <div class="p-content">
-                            <h3><a href="/post/<?= $post->id?>"><?=$post->title?></a></h3>
-                            <span class="p-date"><?= $post->getTimeString() ?></span>
+                            <h3><a href="/post/<?= $pPost->id?>"><?=$pPost->title?></a></h3>
+                            <span class="p-date"><?= $pPost->getTimeString() ?></span>
                         </div>
                     </div>
                 </div>
@@ -69,14 +69,14 @@
         </aside><!-- end single widget -->
         <aside class="widget p-post-widget">
             <h3 class="widget-title text-uppercase">Последние посты</h3>
-            <?php foreach ($posts as $post):?>
+            <?php foreach ($lastPosts as $lPost):?>
                 <div class="popular-post">
-                    <a href="/post/<?= $post->id?>" class="popular-img"><img src="../<?=$post->image?>" alt="<?=$post->title?>">
+                    <a href="/post/<?= $lPost->id?>" class="popular-img"><img src="../<?=$lPost->image?>" alt="<?=$lPost->title?>">
                         <div class="p-overlay"></div>
                     </a>
                     <div class="p-content">
-                        <a href="/post/<?= $post->id?>"><?=$post->title?></a>
-                        <span class="p-date"><?= $post->getTimeString() ?></span>
+                        <a href="/post/<?= $lPost->id?>"><?=$lPost->title?></a>
+                        <span class="p-date"><?= $lPost->getTimeString() ?></span>
                     </div>
                 </div>
             <?php endforeach;?>

@@ -14,6 +14,12 @@ use yii\sphinx\Query;
 
 class SiteController extends Controller
 {
+
+    public $lastPosts;
+    public $popularPosts;
+    public $tags;
+    public $categories;
+
     /**
      * @inheritdoc
      */
@@ -44,6 +50,22 @@ class SiteController extends Controller
         ];
     }
 
+    public function beforeAction($action)
+    {
+
+        if (!parent::beforeAction($action)) {
+            return false;
+        }
+
+        $post = new Post;
+        $this->tags = $post->getTags();
+        $this->lastPosts = $post::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->limit(5)->all();
+        $this->popularPosts = $post::find()->where(['status' => 1, 'isfeatured' => 1])->orderBy(['time'=>SORT_DESC])->limit(5)->all();
+        $this->categories = Category::find()->all();
+
+        return true;
+    }
+
     /**
      * @inheritdoc
      */
@@ -67,14 +89,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $posts = new Post;
-        $tags = $posts->getTags();
-        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->limit(5)->all();
-        $categories = Category::find()->all();
+        $posts = Post::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->all();
         return $this->render('index', [
                 'posts' => $posts,
-                'categories' => $categories,
-                'tags' => $tags,
+                'lastPosts' => $this->lastPosts,
+                'popularPosts' => $this->popularPosts,
+                'categories' => $this->categories,
+                'tags' => $this->tags,
             ]
         );
     }
@@ -86,16 +107,13 @@ class SiteController extends Controller
      */
     public function actionCategory($id)
     {
-        $posts = new Post;
-        $tags = $posts->getTags();
-        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->limit(5)->all();
-        $categories = Category::find()->all();
-
         $category = Category::findOne($id);
+
         return $this->render('category', [
-                'posts' => $posts,
-                'categories' => $categories,
-                'tags' => $tags,
+                'lastPosts' => $this->lastPosts,
+                'popularPosts' => $this->popularPosts,
+                'categories' => $this->categories,
+                'tags' => $this->tags,
                 'category' => $category,
                 'postByCategory' => $category->activePosts,
             ]
@@ -109,17 +127,13 @@ class SiteController extends Controller
      */
     public function actionTag($tag)
     {
-        $posts = new Post;
-        $tags = $posts->getTags();
-        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->limit(5)->all();
-        $categories = Category::find()->all();
+        $postsByTag = Post::find()->where(['status' => 1])->andFilterWhere(['like', 'tags', $tag])->all();
 
-        $postsByTag = Post::find()->where(['status' => 1])->andFilterWhere(['like', 'tags', $tag])
-            ->all();
         return $this->render('tag', [
-                'posts' => $posts,
-                'categories' => $categories,
-                'tags' => $tags,
+                'lastPosts' => $this->lastPosts,
+                'popularPosts' => $this->popularPosts,
+                'categories' => $this->categories,
+                'tags' => $this->tags,
                 'postsByTag' => $postsByTag,
                 'tag' => $tag,
             ]
@@ -133,16 +147,13 @@ class SiteController extends Controller
      */
     public function actionPost($id)
     {
-        $posts = new Post;
-        $tags = $posts->getTags();
-        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->limit(5)->all();
-        $categories = Category::find()->all();
-
         $post = Post::findOne($id);
+
         return $this->render('post', [
-                'posts' => $posts,
-                'categories' => $categories,
-                'tags' => $tags,
+                'lastPosts' => $this->lastPosts,
+                'popularPosts' => $this->popularPosts,
+                'categories' => $this->categories,
+                'tags' => $this->tags,
                 'post' => $post,
             ]
         );
@@ -248,15 +259,11 @@ class SiteController extends Controller
 //            ->all();
 //        print_r($rows);die();
 
-        $posts = new Post;
-        $tags = $posts->getTags();
-        $posts = $posts::find()->where(['status' => 1])->orderBy(['time'=>SORT_DESC])->limit(5)->all();
-        $categories = Category::find()->all();
-
         return $this->render('search', [
-                'posts' => $posts,
-                'categories' => $categories,
-                'tags' => $tags,
+                'lastPosts' => $this->lastPosts,
+                'popularPosts' => $this->popularPosts,
+                'categories' => $this->categories,
+                'tags' => $this->tags,
                 'snippets' => $snippets,
             ]
         );

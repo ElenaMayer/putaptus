@@ -17,7 +17,7 @@ $this->title = Yii::$app->params['title']. ' - '.$post->title;
                     <?= $post->content ?>
                 </div>
                 <div class="post-tag">
-                    <?php foreach ($post->getTags() as $tag):?>
+                    <?php foreach (explode(",",$post->tags) as $tag):?>
                         <a href="/tag/<?= $tag ?>"><?= $tag ?></a>
                     <?php endforeach;?>
                 </div>
@@ -62,7 +62,8 @@ $this->title = Yii::$app->params['title']. ' - '.$post->title;
         </div>
     </div>
     <?= $this->render('_sidebar', [
-        'posts' => $posts,
+        'lastPosts' => $lastPosts,
+        'popularPosts' => $popularPosts,
         'categories' => $categories,
         'tags' => $tags,
     ]); ?>
