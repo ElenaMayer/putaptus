@@ -747,10 +747,15 @@ pagination
     border-radius: 2px;
 }
 
-.post-pagination .pagination > li.active a, .post-pagination .pagination > li a:hover {
+.post-pagination .pagination > li.active a,
+.post-pagination .pagination > li a:hover {
     background: #59af51;
     border-color: #59af51;
     color: #fff;
+}
+
+.post-pagination .pagination .disabled {
+    display: none;
 }
 
 .post.list-post .post-content .entry-content .continue-reading a {
