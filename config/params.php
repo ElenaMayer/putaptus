@@ -12,5 +12,6 @@ return [
     'groupIdVk' => '152357955',
     'pageLimit' => '15',
     'developer' => 'Elena Mayer',
-    'developerSite' => 'http://e-mayer.ru'
+    'developerSite' => 'http://e-mayer.ru',
+    'domain' => 'putaptus.ru',
 ];
