@@ -126,7 +126,7 @@ AppAsset::register($this);
             <div class="col-md-12">
                 <div class="copyright-area">
                     <div class="copy-text pull-left">
-                        <p>&copy; <?= date('Y') ?> <?= Yii::powered() ?></p>
+                        <p>Copyright © <?= date('Y');?> by <?php echo Yii::$app->params['domain']; ?>. Developed by <a href="<?php echo Yii::$app->params['developerSite']; ?>"><?php echo Yii::app()->params['developer']; ?></a>.</p>
                     </div>
                     <div class="pull-right social-share footer-social-icon">
                         <span>Мы в соцсетях: </span>

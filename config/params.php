@@ -11,4 +11,6 @@ return [
     'linkYt' => 'https://www.youtube.com/channel/UCK69nZWaEh-f7Oyw3wg9b8g/',
     'groupIdVk' => '152357955',
     'pageLimit' => '15',
+    'developer' => 'Elena Mayer',
+    'developerSite' => 'http://e-mayer.ru'
 ];
